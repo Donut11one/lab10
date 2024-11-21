@@ -65,11 +65,11 @@ public class BankApplicationTests
     @Test
     void transferBetweenBankAccountsAndVerifyBalances()
     {
-        account1.transferToBank(account2, "12345", 200);
+        account1.transferToBank(account2, "67890", 200);
         assertEquals(800, account1.getBalanceUsd());
         assertEquals(700, account2.getBalanceUsd());
 
-        account2.transferToBank(account1, "67890", 100);
+        account2.transferToBank(account1, "12345", 100);
         assertEquals(900, account1.getBalanceUsd());
         assertEquals(600, account2.getBalanceUsd());
     }
@@ -100,8 +100,8 @@ public class BankApplicationTests
     void checkInitialBalanceCorrectness()
     {
         // Checking initial balance for account1 and account2 with more random numbers
-        assertEquals(2673.45, account1.getBalanceUsd(), 0.01); // Randomized balance for account1
-        assertEquals(1234.89, account2.getBalanceUsd(), 0.01); // Randomized balance for account2
+        assertEquals(1000, account1.getBalanceUsd(), 0.01); // Randomized balance for account1
+        assertEquals(500, account2.getBalanceUsd(), 0.01); // Randomized balance for account2
     }
 
     @Test
@@ -135,14 +135,14 @@ public class BankApplicationTests
     void summingBalancesFromMultipleAccountsInBank()
     {
         // Total balance across all accounts in bank1 with new random balances
-        assertEquals(2673.45, bank1.totalBalanceUsd(), 0.01);  // Bank 1 total balance with random number
+        assertEquals(1000, bank1.totalBalanceUsd(), 0.01);  // Bank 1 total balance with random number
 
         // Total balance across all accounts in bank2 with new random balances
-        assertEquals(1234.89, bank2.totalBalanceUsd(), 0.01);   // Bank 2 total balance with random number
+        assertEquals(500, bank2.totalBalanceUsd(), 0.01);   // Bank 2 total balance with random number
 
         // Add a new account to bank2 with random balance and recalculate total balance
         bank2.addAccount(new BankAccount("98765", 503.21)); // New account with a random balance
-        assertEquals(1738.10, bank2.totalBalanceUsd(), 0.01); // New total balance after adding new account
+        assertEquals(1003.21, bank2.totalBalanceUsd(), 0.01); // New total balance after adding new account
     }
 
 }
